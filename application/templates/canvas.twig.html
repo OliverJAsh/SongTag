@@ -1,0 +1,69 @@
+{% extends 'layout.twig.html' %}
+
+{% set body_class = 'canvas' %}
+
+{% block body %}
+	<div class="popups">
+	</div>
+
+	<div class="notifications">
+	</div>
+
+	<div class="wrapper">
+		<div class="sidebar">
+			<header class="main-header">
+				<hgroup>
+					<h1 class="h6 inner-wrapper">
+						<div class="inner-inner-wrapper">
+							<a href="/">
+								<img class="logo" src="/images/logo.png" alt="SongTag">
+							</a>
+						</div>
+					</h1>
+					<h2 class="h1 bottom-left-section">Tag, your hit.</h2>
+				</hgroup>
+			</header>
+
+			<section class="content friends facebook-search js-search">
+				<h1 class="h2"><span class="spotify-green">Tag</span> a <span class="facebook-blue">friend</span></h1>
+				<p>Choose a friend then search for a song to tag to their timeline.</p>
+				<form class="search-form js-form">
+					<input class="facebook-form-field" type="search" name="friend" placeholder="Search for a friend&hellip;">
+				</form>
+				<ul class="results-list"></ul>
+			</section>
+
+			<section class="content all-friends spotify-search js-search">
+				<h1 class="h2"><span class="spotify-green">Tag</span> your <span class="facebook-blue">timeline</span></h1>
+				<p>Search for a song to tag to your timeline.</p>
+				<form class="search-form js-form">
+					<input class="spotify-form-field" type="search" name="song" placeholder="Search for a song&hellip;" autocomplete="off">
+				</form>
+				<ul class="results-list"></ul>
+			</section>
+
+			<aside class="content activity">
+				<h1 class="h3">Friend activity</h1>
+				<div class="fb-activity" data-width="250" data-height="330" data-header="false" data-border-color="#fff" app_id="294833607242566"></div>
+			</aside>
+		</div>
+
+		<section class="content stream">
+			{% if flash.welcome %}
+				<h1 class="h1">Welcome</h1>
+				<p>Choose a friend or a post, then search for a song in the comments field, and select to tag it. You and your friends can share songs straight from Facebook, and just hit play to launch them directly in Spotify.</p>
+			{% endif %}
+
+			<h1 class="h2"><span class="spotify-green">Tag</span> a <span class="facebook-blue">story</span></h1>
+			<p>Here's your Facebook news feed. Search for a track in the comment box to tag any story with a song.</p>
+
+			<div class="posts">
+				<p>Loading your news feed&hellip;</p>
+			</div>
+
+			<footer>
+				<input type="button" class="hidden load-more-button" value="Load more">
+			</footer>
+		</section>
+	</div>
+{% endblock %}

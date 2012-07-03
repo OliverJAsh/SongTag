@@ -1,0 +1,73 @@
+<%
+require([
+	"tpl!/templates/partials/tags.html",
+	"tpl!/templates/partials/spotify-search.html"
+], function (renderTags, renderSpotifySearch) { %>
+	<% _.each(stream, function (story) { %>
+		<section class="stream-item facebook-object" data-id="<%= story.post_id %>"<% if (story.object_id) { %> data-object-id="<%= story.object_id %>"<% } %>>
+			<header class="stream-item-header">
+				<a class="facebook-link" href="//facebook.com/<%= story.actor_id %>" target="_blank">
+					<div class="thumbnail-container">
+						<img class="indent-image facebook-image" src="//graph.facebook.com/<%= story.actor_id %>/picture" alt="">
+					</div>
+					<h1 class="h3 facebook-name facebook-actor-name"><%= story.actor_name %></h1>
+				</a>
+				<% if (story.target_name) { %>
+					<i class="icon-chevron-right"></i>
+					<a class="facebook-link" href="//facebook.com/<%= story.target_id %>" target="_blank">
+						<h1 class="h3 facebook-name facebook-target-name"><%= story.target_name %></h1>
+					</a>
+				<% } %>
+				<% if (story.description) { %>
+					<span class="facebook-caption">
+						<%= story.description %>
+					</span>
+				<% } %>
+			</header>
+
+			<div class="indent-content">
+				<div class="facebook-content <%= story.type %>">
+					<% if (story.message) { %>
+						<p><%= story.message %></p>
+					<% } %>
+
+					<% if (story.attachment) { %>
+						<div class="facebook-attachment">
+							<% _.each(story.attachment.media, function (media) { %>
+								<a href="<%= media.href %>" target="_blank">
+									<img class="indent-image facebook-link-image" src="<%= media.src %>" alt="<%= media.alt %>">
+								</a>
+							<% }); %>
+							<div class="indent-content">
+								<% if (story.attachment.name) { %>
+									<a href="<%= story.attachment.href %>" target="_blank">
+										<h1 class="h5"><%= story.attachment.name %></h1>
+									</a>
+								<% } %>
+								<% if (story.attachment.caption) { %>
+									<a class="facebook-caption" href="<%= story.attachment.href %>" target="_blank"><%= story.attachment.caption %></a>
+								<% } %>
+								<% if (story.attachment.description) { %>
+									<p><%= _.escape(story.attachment.description) %></p>
+								<% } %>
+							</div>
+						</div>
+					<% } %>
+				</div>
+
+				<%= renderSpotifySearch({
+					user: {
+						from: user
+					}
+				}) %>
+
+				<%= renderTags({
+					tags: story.tags,
+					user: user
+				}) %>
+			</div>
+		</section>
+		<%
+	}); %>
+	<%
+}); %>

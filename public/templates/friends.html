@@ -1,0 +1,6 @@
+<% _.each(friends, function (friend) { %>
+	<li class="results-list-item" data-id="<%= friend.id %>">
+		<img class="indent-image facebook-image" src="https://graph.facebook.com/<%= friend.id %>/picture" alt="">
+		<h1 class="indent-content h3 facebook-name"><%= friend.name %></h1>
+	</li>
+<% }); %>

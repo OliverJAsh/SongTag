@@ -1,0 +1,12 @@
+<%
+require([
+	"tpl!/templates/partials/notification.html"
+], function (renderNotification) {
+	var notification = {
+		title: 'Tagged',
+		message: 'You shared <span class="spotify-track-name">' + tag.track.name + '</span> by <span class="spotify-track-artist">' + tag.track.artist + '</span> with all of your friends.',
+	}; %>
+
+	<%= renderNotification({ notification: notification }) %>
+	<%
+}); %>

@@ -1,0 +1,56 @@
+.home {
+	max-width: 900px;
+	.main-header {
+		@extend .clearfix;
+		.left-section {
+			position: relative;
+			z-index: 1;
+			float: left;
+			width: 52%;
+			.logo {
+				width: 100%; } }
+		.right-section {
+			position: absolute;
+			width: 52%;
+			height: 100%;
+			right: 0; }
+		.bottom-left-section {
+			position: absolute;
+			bottom: 0;
+			margin: 0; }
+		@media screen and (max-width: 500px) {
+			overflow: visible;
+			.left-section {
+				float: none;
+				width: auto; }
+			.right-section {
+				position: static;
+				width: auto;
+				height: auto;
+				width: 100%;
+				height: 15em; }
+			.bottom-left-section {
+				position: static;
+				margin: auto; } } }
+	.steps {
+		@extend .clearfix;
+		counter-reset: instruction;
+		.step {
+			@include box-sizing(border-box);
+			width: 33.333%;
+			float: left;
+			padding-right: 2em;
+			@media screen and (max-width: 700px) {
+				width: auto;
+				float: none;
+				padding-right: 0; }
+			h1:before {
+				@include border-radius(100%);
+				color: white;
+				padding: 0.1em 0.5em;
+				margin-right: 0.5em;
+				counter-increment: instruction;
+				content: counter(instruction);
+				background-color: $spotify-green; } } }
+	.facebook-login-button {
+		font-size: larger; } }

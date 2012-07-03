@@ -1,0 +1,6 @@
+<% _.each(tracks, function (track) { %>
+	<li class="results-list-item" data-uri="<%= track.href %>">
+		<h1 class="h5 spotify-track-name"><%= track.name %></h1>
+		<div class="spotify-track-artist"><%= track.artists[0].name %></div>
+	</li>
+<% }); %>

@@ -1,0 +1,16 @@
+<%
+require([
+	"tpl!/templates/partials/tag.html"
+], function (renderTag) { %>
+	<section class="tags-list">
+		<h1 class="h4 hidden">Tags</h1>
+		<% _.each(tags, function (tag) { %>
+			<%= renderTag({
+				tag: tag,
+				user: user
+			}) %>
+		<% }); %>
+	</section>
+	<%
+});
+%>

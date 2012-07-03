@@ -1,0 +1,259 @@
+/*
+z-index order:
+1: .results-list;
+2: .logo, .inner-inner-wrapper;
+3: .popups;
+4: .notifications;
+*/
+
+$facebook-image-width: 4em;
+$small-facebook-image-width: 3em;
+$x-small-facebook-image-width: 2em;
+$tags-background-color: lighten($spotify-green, 44%);
+
+.spotify-form-field {
+	@include colored-form-field($spotify-green); }
+.facebook-form-field {
+	@include colored-form-field($facebook-blue); }
+.facebook-caption {
+	@extend .light-text; }
+.facebook-name {
+	color: $facebook-blue; }
+.spotify-image {
+	width: 6em; }
+.spotify-track-name, .spotify-track-artist {
+	@extend .spotify-green; }
+.facebook-image {
+	width: $facebook-image-width;
+	height: $facebook-image-width; }
+.small-facebook-image {
+	width: $small-facebook-image-width;
+	height: $small-facebook-image-width; }
+.x-small-facebook-image {
+	width: $x-small-facebook-image-width;
+	height: $x-small-facebook-image-width; }
+
+.spotify-search {
+	.results-list {
+		border-color: $dark-spotify-green; }
+	.facebook-image {
+		@extend .small-facebook-image;
+		margin: 0 {
+			right: $padding; } }
+	.spotify-track-name {
+		margin: 0; }
+	.results-list-item {
+		&.is-selected {
+			background-color: $dark-spotify-green;
+			.spotify-track-name {
+				color: white; }
+			.spotify-track-artist {
+				color: lighten($dark-spotify-green, 40%); } } } }
+.facebook-search {
+	.results-list {
+		border-color: $dark-facebook-blue; }
+	.facebook-name {
+		margin: 0; }
+	.results-list-item {
+		&.is-selected {
+			background-color: $facebook-blue;
+			.facebook-name {
+				color: white; } } } }
+.facebook-attachment {
+	h1:first-child {
+		margin-top: 0; }
+	@extend .clearfix, .vertical-spacing; }
+.facebook-link {
+	@extend .facebook-blue;
+	.facebook-name {
+		display: inline; }
+	h1 {
+		margin-top: 0 !important; } }
+.facebook-target-name {
+	display: inline; }
+.facebook-link-image {
+	border: 2px solid $dark-facebook-blue; }
+.spotify-link-artwork {
+	position: relative;
+	border: 2px solid $light-spotify-green;
+	&:after {
+		@extend .block-pseudo;
+		width: 50px;
+		height: 50px;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		margin-left: -25px;
+		margin-top: -25px;
+		background-image: url('/images/play-buttons.png');
+		background-repeat: no-repeat; }
+	.spotify-link:hover &:after {
+		background-position: 0 -50px; }
+	img {
+		width: 6em;
+		display: block; } }
+.stream-item-header {
+	.icon-chevron-right {
+		margin: 0 0.5em;
+		@extend .light-text;
+	}
+}
+
+.popups-item {
+	.results-list {
+		left: $popups-item-horizontal-padding + $padding + $small-facebook-image-width + $padding;
+		right: $popups-item-horizontal-padding + $padding; } }
+.notifications-item {
+	background-color: $spotify-green;
+	border-bottom: 1px solid $dark-spotify-green;
+	color: darken($dark-spotify-green, 20%);
+	@include text-shadow(0 1px mix($spotify-green, #fff, 40%));
+	.spotify-track-name, .spotify-track-artist {
+		color: darken($dark-spotify-green, 10%); }
+	.facebook-name {
+		color: $dark-facebook-blue; } }
+.facebook-object, .wall-post {
+	position: relative;
+	@include vertical-spacing(0.5em);
+	.spotify-link {
+		display: block;
+		@extend .vertical-spacing; } }
+.facebook-object {
+	.spotify-search, .tags-list-item {
+		padding: $padding;
+		background-color: $tags-background-color;
+		border-bottom: 1px solid $light-spotify-green; }
+	.spotify-search {
+		@extend .clearfix; } }
+.results-list {
+	@extend .border-box, .hidden;
+	list-style: none;
+	padding: 0;
+	position: absolute;
+	left: 0;
+	right: 0;
+	z-index: 1;
+	background-color: white;
+	margin-top: -1px !important;
+	border: 1px solid $tone {
+		bottom-width: 2px; } }
+.results-list-item {
+	padding: $padding;
+	&.is-selected {
+		color: white; } }
+.tags-list-item {
+	&:hover {
+		.icon-remove {
+		display: block; } }
+	.light-text {
+		@include light-text($tags-background-color, 40%); }
+	.icon-remove {
+		display: none;
+		@extend .thumbnail-right, .light-text; }
+	.facebook-image {
+		@extend .x-small-facebook-image; }
+	.tags-message {
+		font-style: italic; } }
+.tags-message-form {
+	@extend .clearfix;
+	text-align: right;
+	.facebook-form-field {
+		@extend .message-box;
+		margin-bottom: $padding; }
+	.button {
+		margin-left: $padding; } }
+
+.canvas {
+	max-width: 1000px;
+	.spotify-header {
+		> span {
+			position: absolute;
+			right: 0;
+			@media screen and (max-width: 700px) {
+				position: static; } } }
+	.search-box, .message-box {
+		@extend .border-box, .stretch;
+		&, &::-webkit-input-placeholder {
+			@include transition(all 0.2s ease); } } }
+.sidebar {
+	$sidebar-width: 15em;
+	padding-right: 2em;
+	float: left;
+	width: $sidebar-width;
+	.logo {
+		max-width: 100%; }
+	@media screen and (max-width: 700px) {
+		padding-right: 0;
+		width: auto;
+		margin-right: 0;
+		float: none; }
+	@media screen and (min-width: 700px) {
+		.main-header {
+			// Ratio = height/width
+			$logo-width: $sidebar-width + 3;
+			$logo-height: $logo-width * (313 / 712);
+			.logo, .inner-wrapper {
+				height: $logo-height; }
+			.logo, .inner-wrapper {
+				width: $logo-width; }
+			.logo, .inner-inner-wrapper {
+				top: 0;
+				position: fixed;
+				z-index: 2; }
+			.inner-inner-wrapper {
+				width: $sidebar-width;
+				pointer-events: none;
+				height: $logo-height * 2;
+				background: white;
+				@include background(linear-gradient(top, white 30%, hsla(0, 0, 100%, 0) 80%)); }
+			.logo {
+				pointer-events: all;
+				cursor: pointer;
+				padding-top: 2em;
+				max-width: 100%;
+				@media screen and (max-width: 700px) {
+					display: block;
+					margin: 0 auto; } } } }
+	.friends, .all-friends {
+		position: relative; }
+	.activity {
+		display: none;
+		.fb-activity {
+			@extend .clearfix;
+			margin-left: -10px;
+			iframe {
+				max-width: 100% !important;
+			} } }
+	.search-form, .results-list {
+		font-size: 0.8em; }
+	.facebook-search {
+		.results-list-item {
+			.facebook-image {
+				@extend .x-small-facebook-image; } } } }
+.stream {
+	padding-left: 2em;
+	border-left: 1px solid lighten($tone, 60%);
+	@extend .clearfix;
+	@media screen and (max-width: 700px) {
+		padding-left: 0;
+		border-left: 0; }
+	.posts {
+		font-size: 0.8em;
+		&.is-loading {
+			opacity: 0.5;
+			min-height: 30em; } }
+	&.is-searching {
+		.stream-item:not(.is-active) {
+			opacity: 0.5; } }
+	.stream-item {
+		padding: 1em 0;
+		&:not(:last-of-type) {
+			@extend .light-border-bottom; } }
+	.spotify-search {
+		.results-list {
+			left: $facebook-image-width + $spacing + $padding + 3em + $padding;
+			right: $padding;
+			margin: {
+				left: -2px; }; } }
+	.load-more-button {
+		@extend .stretch; } }

@@ -1,0 +1,44 @@
+{% extends 'layout.twig.html' %}
+
+{% set body_class = 'home' %}
+
+{% block body %}
+	<header class="wrapper main-header">
+		<hgroup class="left-section">
+			<a href="http://songtagapp.com/">
+				<h1 class="h1">
+					<img class="logo" src="images/logo.png" alt="SongTag">
+				</h1>
+			</a>
+			<h2 class="h1 bottom-left-section">Tag, your hit.</h2>
+		</hgroup>
+		<iframe class="right-section" src="http://player.vimeo.com/video/40810423?color=80C639" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+	</header>
+
+	<section class="wrapper introduction">
+		<h1 class="h2">Spotify and Facebook are now best friends.</h1>
+		<p>SongTag lets you discover a world of music in Spotify and share it with your Facebook friends, all with a simple tag! With this app, you can tag just about anything on Facebook with a song, just like you'd tag a friend. If Spotify is the soundtrack to your social life, SongTag takes you beyond the wall.</p>
+	</section>
+
+	<section class="wrapper steps">
+		<div class="step">
+			<h1 class="h1">Choose</h1>
+			<p>Choose where to tag your song, whether on your timeline, a friend’s timeline or a story from the news feed.</p>
+		</div>
+		<div class="step">
+			<h1 class="h1">Search</h1>
+			<p>Search for a song by typing a track, artist or album name into the comments box.  We'll find the track on Spotify.</p>
+		</div>
+		<div class="step">
+			<h1 class="h1">Play</h1>
+			<p>Select your song from the list of suggestions.  To launch the song in Spotify, just press play!</p>
+		</div>
+	</section>
+
+	<section class="wrapper facebook-connect">
+		<h1 class="hidden">Connect to Facebook</h1>
+		<div class="text-center">
+			<input class="facebook-login-button" type="button" value="Connect to Facebook">
+		</div>
+	</section>
+{% endblock %}

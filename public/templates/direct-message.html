@@ -1,0 +1,16 @@
+<%
+require([
+	"tpl!/templates/partials/tags.html",
+	"tpl!/templates/partials/spotify-search.html",
+	"tpl!/templates/partials/popup.html"
+], function (renderTags, renderSpotifySearch, renderPopup) {
+	var popup = {
+		class: 'facebook-object',
+		id: user.to.id,
+		title: 'Send a song to <span class="facebook-name"> ' + user.to.name + '</span>',
+		content: renderSpotifySearch({ user: user }) + renderTags({ tags: [] })
+	}; %>
+	
+	<%= renderPopup({ popup: popup }) %>
+	<%
+}); %>

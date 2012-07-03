@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>SongTag - Share music online. With your friends.</title>
+		<meta name="description" content="SongTag lets you share and discover a world of music with your oldest and closest Facebook friends, all with a simple tag.">
+		<meta name="keywords" content="music, share, discover, facebook, spotify, songtag, streaming, listen, friends, play, online, digital">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
+		<link rel="stylesheet" href="/style.css">
+		<script src="/scripts/libs/html5shiv.js"></script>
+		<script data-main="/scripts/main" src="/scripts/libs/require.js"></script>
+	</head>
+	<body class="{{ body_class }}">
+		<!--[if lt IE 9]><p>We're sorry, but SongTag will not work properly in your internet browser. We recommend <a href="http://browsehappy.com/">upgrading to a different browser</a>.</p><![endif]-->
+		<!--[if lt IE 7]><p class="chromeframe">Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+		<div class="wrapper spotify-header">
+			<span>Powered by <a class="spotify-link" href="//spotify.com/" target="_blank"><span>Spotify</span><img class="spotify-header-logo" src="/images/spotify-icon.png" alt="Spotify logo"></a></span>
+		</div>
+		{% block body %}
+		{% endblock %}
+		<div class="wrapper footer">
+			<ul class="horizontal-list">
+				<li class="horizontal-list-item">Copyright &copy; 2012 by SongTag. Facebook and Spotify are registered trademarks of their respective owners.</li>
+				<li class="horizontal-list-item"><a href="/privacy-policy">Privacy policy</a></li>
+			</ul>
+		</div>
+		<div id="fb-root"></div>
+	</body>
+</html>

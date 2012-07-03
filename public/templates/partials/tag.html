@@ -1,0 +1,27 @@
+<section class="tags-list-item"<% if (!tag.incomplete) { %> data-id="<%= tag.id %>"<% } %>>
+	<a class="facebook-link" href="https://www.facebook.com/<%= tag.user.from.id %>" target="_blank">
+		<div class="thumbnail-container">
+			<img class="indent-image facebook-image" src="https://graph.facebook.com/<%= tag.user.from.id %>/picture" alt="">
+		</div>
+		<h1 class="h5 facebook-name"><%= tag.user.from.name %></h1>
+	</a>
+	<span class="facebook-caption"> tagged <%= tag.track.name %> by <%= tag.track.artist %></span>
+	<% if (!tag.incomplete && tag.user.from.id === user.id) { %><i class="icon-remove"></i><% } %>
+
+	<div class="indent-content">
+		<% if (tag.type === "one") { %>
+			<iframe class="spotify-link" src="//embed.spotify.com/?uri=<%= tag.track.uri %>" width="300" height="80" frameborder="0" allowtransparency="true"></iframe>
+		<% } else { %>
+			<iframe class="spotify-link" src="//embed.spotify.com/?uri=spotify:trackset:PREFEREDTITLE:<%= tag.tracks.uris.join(',') %>" width="300" height="380" frameborder="0" allowtransparency="true"></iframe>
+		<% } %>
+		<% if (tag.incomplete) { %>
+			<form class="tags-message-form js-form js-message-form">
+				<textarea class="facebook-form-field" name="message" placeholder="Type a message to go with your tag."></textarea>
+				<input type="button" class="cancel" value="Cancel">
+				<input type="submit" value="Tag this song">
+			</form>
+		<% } else { %>
+			<p class="tags-message"><%= tag.message %></p>
+		<% } %>
+	</div>
+</section>

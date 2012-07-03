@@ -1,0 +1,13 @@
+<% require([
+	"tpl!/templates/partials/tags.html",
+	"tpl!/templates/partials/popup.html"
+], function (renderTags, renderPopup) {
+	var popup = {
+		class: 'wall-post',
+		title: 'Share a song with all your friends',
+		content: renderTags({ tags: [] })
+	}; %>
+
+	<%= renderPopup({ popup: popup }) %>
+	<%
+}); %>

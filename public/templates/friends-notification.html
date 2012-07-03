@@ -1,0 +1,12 @@
+<%
+require([
+	"tpl!/templates/partials/notification.html"
+], function (renderNotification) {
+	var notification = {
+		title: 'Tagged',
+		message: 'You sent <span class="spotify-track-name">' + tag.track.name + '</span> by <span class="spotify-track-artist">' + tag.track.artist + '</span> to <span class="facebook-name">' + tag.user.to.name + '</span>',
+	}; %>
+
+	<%= renderNotification({ notification: notification }) %>
+	<%
+}); %>
